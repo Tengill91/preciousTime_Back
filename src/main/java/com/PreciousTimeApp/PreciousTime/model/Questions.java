@@ -27,9 +27,10 @@ public class Questions {
     public Questions() {
     }
 
-    public Questions(Long id, String question) {
+    public Questions(Long id, String question, Labels labels) {
         this.id = id;
         this.question = question;
+        this.labels = labels;
     }
 
     public Long getId() {
@@ -46,5 +47,13 @@ public class Questions {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+    public Labels getLabels() {
+        return labels;
+    }
+
+    public void setLabels(Labels labels) {
+        this.labels = labels;
     }
 }

@@ -26,6 +26,12 @@ public class Labels {
     public Labels() {
     }
 
+    public Labels(Long id, String label, List<Questions> questions) {
+        this.id = id;
+        this.label = label;
+        this.questions = questions;
+    }
+
     public Long getId() {
         return id;
     }
@@ -40,5 +46,13 @@ public class Labels {
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public List<Questions> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Questions> questions) {
+        this.questions = questions;
     }
 }
