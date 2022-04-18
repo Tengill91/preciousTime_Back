@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/crud")
-@CrossOrigin(origins = "http://localhost:8081")
+@RequestMapping("/api/crud")
+// http://localhost:8081
+@CrossOrigin(origins = "*",maxAge = 3600)
 public class LabelsController {
 
     @Autowired

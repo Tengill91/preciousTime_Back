@@ -1,5 +1,7 @@
 package com.PreciousTimeApp.PreciousTime.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
@@ -7,32 +9,34 @@ import javax.validation.constraints.Size;
 @Table(name = "questions")
 public class Questions {
 
+    // du måste nog göra om bridge tablet
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
+    @NotNull
     @Column(name = "question")
-    @Size(max = 100)
     private String question;
 
-    @Column(name = "comment")
-    @Size(max = 100)
-    private String comment;
-
-    @Column(name = "time")
-    @Size(max = 100)
-    private Integer time;
+    // realtion to labels
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "label_id")
+    private Labels labels;
 
     public Questions() {
-
     }
 
+    public Questions(Long id, String question) {
+        this.id = id;
+        this.question = question;
+    }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,21 +46,5 @@ public class Questions {
 
     public void setQuestion(String question) {
         this.question = question;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public Integer getTime() {
-        return time;
-    }
-
-    public void setTime(Integer time) {
-        this.time = time;
     }
 }
