@@ -1,11 +1,12 @@
 package com.PreciousTimeApp.PreciousTime.controller;
 
-
 import com.PreciousTimeApp.PreciousTime.model.Labels;
+import com.PreciousTimeApp.PreciousTime.model.Questions;
 import com.PreciousTimeApp.PreciousTime.repository.LabelsRepository;
+import com.PreciousTimeApp.PreciousTime.repository.QuestionsRepository;
 import com.PreciousTimeApp.PreciousTime.service.LabelsService;
+import com.PreciousTimeApp.PreciousTime.service.QuestionsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,37 +15,36 @@ import java.util.List;
 @RequestMapping("/api/crud")
 // http://localhost:8081
 @CrossOrigin(origins = "*",maxAge = 3600)
-public class LabelsController {
+public class QuestionsController {
+    @Autowired
+    QuestionsRepository questionsRepository;
 
     @Autowired
-    LabelsRepository labelsRepository;
-
-    @Autowired
-    LabelsService labelsService;
+    QuestionsService questionsService;
 
 
-    @PostMapping("/addLabel")
-    public String addLabel(@RequestBody Labels label){
-        labelsService.saveLabelS(label);
-        return "New label saved";
+    @PostMapping("/addQuestion")
+    public String addQuestion(@RequestBody Questions question){
+        questionsService.saveQuestionS(question);
+        return "New question saved";
     }
 
-    @GetMapping("/allLabels")
-    public List<Labels> showAllLabels(){
-        return labelsService.getAllLabelsS();
+    @GetMapping("/allQuestions")
+    public List<Questions> showAllQuestions(){
+        return questionsService.getAllQuestionsS();
     }
 
 
-    @GetMapping("/label/{id}")
-    public Labels findLabel(@PathVariable("id")Long id){
-        return labelsService.findLabelByIdS(id);
+    @GetMapping("/question/{id}")
+    public Questions findQuestion(@PathVariable("id")Long id){
+        return questionsService.findQuestionByIdS(id);
     }
 
 
-    @DeleteMapping("/deleteLabel/{id}")
-    private String deleteLabel(@PathVariable("id")Long id){
-        labelsService.deleteLabelS(id);
-        return "Label deleted!";
+    @DeleteMapping("/deleteQuestion/{id}")
+    private String deleteQuestion(@PathVariable("id")Long id){
+        questionsService.deleteQuestionS(id);
+        return "Question deleted!";
     }
 
     /*
@@ -62,6 +62,4 @@ public class LabelsController {
         return ResponseEntity.ok(currentUser);
     }
     */
-
-
 }
