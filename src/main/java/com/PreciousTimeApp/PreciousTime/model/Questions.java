@@ -19,18 +19,18 @@ public class Questions {
     @Column(name = "question")
     private String question;
 
-    // realtion to labels
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "label_id")
-    private Labels labels;
+    @NotNull
+    @Column(name = "label")
+    private String label;
+
 
     public Questions() {
     }
 
-    public Questions(Long id, String question, Labels labels) {
+    public Questions(Long id, String question, String label) {
         this.id = id;
         this.question = question;
-        this.labels = labels;
+        this.label = label;
     }
 
     public Long getId() {
@@ -49,11 +49,11 @@ public class Questions {
         this.question = question;
     }
 
-    public Labels getLabels() {
-        return labels;
+    public String getLabel() {
+        return label;
     }
 
-    public void setLabels(Labels labels) {
-        this.labels = labels;
+    public void setLabel(String label) {
+        this.label = label;
     }
 }

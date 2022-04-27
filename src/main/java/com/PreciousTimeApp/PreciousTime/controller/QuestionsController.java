@@ -25,6 +25,8 @@ public class QuestionsController {
 
     @PostMapping("/addQuestion")
     public String addQuestion(@RequestBody Questions question){
+        System.out.println(question);
+
         questionsService.saveQuestionS(question);
         return "New question saved";
     }

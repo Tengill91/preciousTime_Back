@@ -18,18 +18,14 @@ public class Labels {
 
     private String label;
 
-    // relation to questions
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "labels")
-    private List<Questions> questions;
 
 
     public Labels() {
     }
 
-    public Labels(Long id, String label, List<Questions> questions) {
+    public Labels(Long id, String label) {
         this.id = id;
         this.label = label;
-        this.questions = questions;
     }
 
     public Long getId() {
@@ -46,13 +42,5 @@ public class Labels {
 
     public void setLabel(String label) {
         this.label = label;
-    }
-
-    public List<Questions> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(List<Questions> questions) {
-        this.questions = questions;
     }
 }
