@@ -16,22 +16,24 @@ public class Answers {
     private Long id;
 
     @NotNull
-    @OneToOne( fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    User user;
+    @Column(name = "user_id")
+    private Long userId;
 
     // ska det vara tex @manyToOne?   kolla med lärare
     @NotNull
-    @OneToOne( fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_id", referencedColumnName = "id")
-    Questions questions;
+    @Column(name = "question_id")
+    private Long questionId;
+
+    @NotNull
+    @Column(name = "label_id")
+    private Long label_id;
 
     @NotNull
     @Column(name = "time")
     private String time;
 
     @Column(name = "comment")
-    private String answer;
+    private String comment;
 
     @Column(name = "created_date")
     private String createdDate;
@@ -39,11 +41,13 @@ public class Answers {
     public Answers() {
     }
 
-    public Answers(User user, Questions questions, String time, String answer, String createdDate) {
-        this.user = user;
-        this.questions = questions;
+    public Answers(Long id, Long userId, Long questionId, Long label_id, String time, String comment, String createdDate) {
+        this.id = id;
+        this.userId = userId;
+        this.questionId = questionId;
+        this.label_id = label_id;
         this.time = time;
-        this.answer = answer;
+        this.comment = comment;
         this.createdDate = createdDate;
     }
 
@@ -55,20 +59,28 @@ public class Answers {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public Questions getQuestions() {
-        return questions;
+    public Long getQuestionId() {
+        return questionId;
     }
 
-    public void setQuestions(Questions questions) {
-        this.questions = questions;
+    public void setQuestionId(Long questionId) {
+        this.questionId = questionId;
+    }
+
+    public Long getLabel_id() {
+        return label_id;
+    }
+
+    public void setLabel_id(Long label_id) {
+        this.label_id = label_id;
     }
 
     public String getTime() {
@@ -79,12 +91,12 @@ public class Answers {
         this.time = time;
     }
 
-    public String getAnswer() {
-        return answer;
+    public String getComment() {
+        return comment;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getCreatedDate() {
