@@ -20,18 +20,20 @@ public class Answers {
     private Long userId;
 
     // ska det vara tex @manyToOne?   kolla med lärare
-    @NotNull
+
+    //can be null
     @Column(name = "question_id")
     private Long questionId;
 
     @NotNull
-    @Column(name = "label_id")
-    private Long label_id;
+    @Column(name = "label")
+    private String label;
 
-    @NotNull
+    //can be null
     @Column(name = "time")
-    private String time;
+    private Long time;
 
+    //can be null
     @Column(name = "comment")
     private String comment;
 
@@ -41,11 +43,11 @@ public class Answers {
     public Answers() {
     }
 
-    public Answers(Long id, Long userId, Long questionId, Long label_id, String time, String comment, String createdDate) {
+    public Answers(Long id, Long userId, Long questionId, String label, Long time, String comment, String createdDate) {
         this.id = id;
         this.userId = userId;
         this.questionId = questionId;
-        this.label_id = label_id;
+        this.label = label;
         this.time = time;
         this.comment = comment;
         this.createdDate = createdDate;
@@ -75,19 +77,19 @@ public class Answers {
         this.questionId = questionId;
     }
 
-    public Long getLabel_id() {
-        return label_id;
+    public String getLabel() {
+        return label;
     }
 
-    public void setLabel_id(Long label_id) {
-        this.label_id = label_id;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
-    public String getTime() {
+    public Long getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Long time) {
         this.time = time;
     }
 
