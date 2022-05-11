@@ -17,13 +17,13 @@ public class Answers {
 
     @NotNull
     @Column(name = "user_id")
-    private Long userId;
+    private Long user_id;
 
     // ska det vara tex @manyToOne?   kolla med lärare
 
     //can be null
     @Column(name = "question_id")
-    private Long questionId;
+    private Long question_Id;
 
     @NotNull
     @Column(name = "label")
@@ -38,43 +38,34 @@ public class Answers {
     private String comment;
 
     @Column(name = "created_date")
-    private String createdDate;
+    private String created_date;
 
     public Answers() {
     }
 
-    public Answers(Long id, Long userId, Long questionId, String label, Long time, String comment, String createdDate) {
-        this.id = id;
-        this.userId = userId;
-        this.questionId = questionId;
+    public Answers(Long user_id, Long question_Id, String label, Long time, String comment, String created_date) {
+        this.user_id = user_id;
+        this.question_Id = question_Id;
         this.label = label;
         this.time = time;
         this.comment = comment;
-        this.createdDate = createdDate;
+        this.created_date = created_date;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUser_id() {
+        return user_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getQuestion_Id() {
+        return question_Id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Long getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(Long questionId) {
-        this.questionId = questionId;
+    public void setQuestion_Id(Long question_Id) {
+        this.question_Id = question_Id;
     }
 
     public String getLabel() {
@@ -101,11 +92,11 @@ public class Answers {
         this.comment = comment;
     }
 
-    public String getCreatedDate() {
-        return createdDate;
+    public String getCreated_date() {
+        return created_date;
     }
 
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
+    public void setCreated_date(String created_date) {
+        this.created_date = created_date;
     }
 }

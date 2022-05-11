@@ -20,7 +20,7 @@ public class AnswersService {
     }
 
     public Answers saveAnswerS(Answers answer){
-        return answersRepository.save(answer);
+        return answersRepository.save(new Answers(answer.getUser_id(),answer.getQuestion_Id(), answer.getLabel(),answer.getTime(),answer.getComment(),answer.getCreated_date()));
     }
 
     public Answers findAnswerByIdS(Long id){
