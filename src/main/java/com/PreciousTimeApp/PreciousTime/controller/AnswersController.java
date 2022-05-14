@@ -1,15 +1,13 @@
 package com.PreciousTimeApp.PreciousTime.controller;
 
 import com.PreciousTimeApp.PreciousTime.model.Answers;
-import com.PreciousTimeApp.PreciousTime.model.Labels;
 import com.PreciousTimeApp.PreciousTime.repository.AnswersRepository;
-import com.PreciousTimeApp.PreciousTime.repository.LabelsRepository;
 import com.PreciousTimeApp.PreciousTime.service.AnswersService;
-import com.PreciousTimeApp.PreciousTime.service.LabelsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/crud")
@@ -31,6 +29,7 @@ public class AnswersController {
 
     @GetMapping("/allAnswers")
     public List<Answers> showAllAnswers(){
+        System.out.println("hello from all answers controller ");
         return answersService.getAllAnswersS();
     }
 

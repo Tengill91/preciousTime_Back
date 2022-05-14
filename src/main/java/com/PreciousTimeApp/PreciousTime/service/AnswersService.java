@@ -1,20 +1,32 @@
 package com.PreciousTimeApp.PreciousTime.service;
 
 import com.PreciousTimeApp.PreciousTime.model.Answers;
+import com.PreciousTimeApp.PreciousTime.model.User;
 import com.PreciousTimeApp.PreciousTime.repository.AnswersRepository;
+import com.PreciousTimeApp.PreciousTime.springSecurity.SecurityServices.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AnswersService {
+
+
     @Autowired
     AnswersRepository answersRepository;
 
     public List<Answers> getAllAnswersS(){
+        UserDetailsImpl loggedInUser = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long loggedInUserId = loggedInUser.getId();
 
-        List<Answers> answersList = answersRepository.findAll();
+        // måste nog göra en egen query för att hitta user_id istället för answer_id
+        List<Answers> answersList = answersRepository.findAllAnswersByUserId(loggedInUserId);
+        System.out.println(answersList);
 
         return answersList;
     }
