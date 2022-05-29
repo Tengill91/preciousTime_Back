@@ -29,7 +29,6 @@ public class AnswersController {
 
     @GetMapping("/allAnswers")
     public List<Answers> showAllAnswers(){
-        System.out.println("hello from all answers controller ");
         return answersService.getAllAnswersS();
     }
 
